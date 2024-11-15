@@ -53,9 +53,9 @@ mongoose
   .catch((err) => console.error("Error de conexión:", err));
 
 // Rutas
-const clienteRoutes = require("./routes/ClienteRoutes");
-const creditoRoutes = require("./routes/CreditoRoutes"); // Nueva ruta de crédito
-const asesorRoutes = require("./routes/asesorRoutes");
+const clienteRoutes = require("../routes/clienteRoutes");
+const creditoRoutes = require("../routes/creditoRoutes"); // Nueva ruta de crédito
+const asesorRoutes = require("../routes/asesorRoutes");
 app.use("/api/clientes", clienteRoutes);
 app.use("/api/creditos", creditoRoutes); // Nueva ruta
 
