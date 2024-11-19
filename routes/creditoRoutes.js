@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Credito = require("../models/Credito");
-
+const creditoController = require("../controllers/creditoController");
 // Endpoint para simular crédito
 router.post("/simular-credito", (req, res) => {
   const { fechaCredito, montoCredito, formaPago, cantidadCuotas } = req.body;
@@ -113,7 +113,23 @@ router.post("/crear-credito", async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
+
+  // Crear un nuevo crédito
+  router.post("/crear", creditoController.createCredito);
+
+  // Listar todos los créditos
+  router.get("/listar", creditoController.getAllCreditos);
+
+  // Obtener un crédito por ID
+  router.get("/:id", creditoController.getCreditoById);
+
+  // Actualizar un crédito
+  router.put("/actualizar/:id", creditoController.updateCredito);
+
+  // Eliminar un crédito
+  router.delete("/eliminar/:id", creditoController.deleteCredito);
 });
+
 module.exports = router;
 
 // const express = require("express");
