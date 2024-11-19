@@ -114,5 +114,9 @@ router.post("/crear-credito", async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
+router.get("/listar", creditoController.getAllCreditos);
+router.get("/:id", creditoController.getCreditoById);
+router.put("/actualizar/:id", creditoController.updateCredito);
+router.delete("/eliminar/:id", creditoController.deleteCredito);
 
 module.exports = router;
