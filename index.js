@@ -37,7 +37,10 @@ app.use(express.json());
 // Configuración de CORS
 app.use(
   cors({
-    origin: "http://localhost:5173", // Cambia esto a la URL de tu frontend
+    origin: [
+      "http://localhost:5173", // Cambia esto a la URL de tu frontend
+      "https://efectivoya.netlify.app",
+    ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
