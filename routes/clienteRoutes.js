@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const clienteController = require("../controllers/ClienteController");
+const clienteController = require("../controllers/clienteController");
 
 // Rutas CRUD para clientes
 router.post("/", clienteController.crearCliente);
