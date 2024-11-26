@@ -1,5 +1,5 @@
-const Cliente = require("../models/clienteModel"); // Ajusta al nombre correcto del modelo
-const Credito = require("../models/creditoModel"); // Ajusta al nombre correcto del modelo
+const Cliente = require("../models/Cliente"); // Ajusta al nombre correcto del modelo
+const Credito = require("../models/Credito"); // Ajusta al nombre correcto del modelo
 
 const obtenerResumen = async (req, res) => {
   try {
