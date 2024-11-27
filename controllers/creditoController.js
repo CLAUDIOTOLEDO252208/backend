@@ -53,8 +53,12 @@ exports.getAllCreditos = async (req, res) => {
     // Opcional: formatea los nombres completos para simplificar la respuesta
     const formattedCreditos = creditos.map((credito) => ({
       ...credito._doc, // Copia todos los campos del crédito
-      clienteNombreCompleto: `${credito.clienteSeleccionado.nombres} ${credito.clienteSeleccionado.apellidos}`,
-      asesorNombreCompleto: `${credito.asesorSeleccionado.nombre} ${credito.asesorSeleccionado.apellido}`,
+      clienteNombreCompleto: credito.clienteSeleccionado
+        ? `${credito.clienteSeleccionado.nombres} ${credito.clienteSeleccionado.apellidos}`
+        : "Cliente no disponible",
+      asesorNombreCompleto: credito.asesorSelecccionado
+        ? `${credito.asesorSeleccionado.nombre} ${credito.asesorSeleccionado.apellido}`
+        : "Asesor no disponible",
     }));
     res.status(200).json(formattedCreditos);
   } catch (error) {
@@ -66,15 +70,15 @@ exports.getCreditoById = async (req, res) => {
   try {
     const { id } = req.params;
     const credito = await Credito.findById(id)
-      .populate("clienteSeleccionado", "nombre apellidos")
-      .populate("asesorSeleccionado", "nombre apellidos");
+      .populate("clienteSeleccionado", "nombres apellidos")
+      .populate("asesorSeleccionado", "nombre apellido");
 
     if (!credito)
       return res.status(404).json({ message: "Crédito no encontrado" });
     const formattedCredito = {
       ...credito._doc,
-      clienteNombreCompleto: `${credito.clienteSeleccionado.nombre} ${credito.clienteSeleccionado.apellidos}`,
-      asesorNombreCompleto: `${credito.asesorSeleccionado.nombre} ${credito.asesorSeleccionado.apellidos}`,
+      clienteNombreCompleto: `${credito.clienteSeleccionado.nombres} ${credito.clienteSeleccionado.apellidos}`,
+      asesorNombreCompleto: `${credito.asesorSeleccionado.nombre} ${credito.asesorSeleccionado.apellido}`,
     };
     res.status(200).json(credito);
   } catch (error) {
