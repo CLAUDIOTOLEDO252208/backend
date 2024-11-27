@@ -4,7 +4,7 @@ const Credito = require("../models/Credito"); // Ajusta al nombre correcto del m
 const obtenerResumen = async (req, res) => {
   try {
     const cantidadClientes = await Cliente.countDocuments();
-    const cantidadAsesores = await Asesor.countDocuments();
+    // const cantidadAsesores = await Asesor.countDocuments();
     const cantidadCreditos = await Credito.countDocuments();
     const cantidadCreditosCancelados = await Credito.countDocuments({
       estado: "cancelado", // Asegúrate de que coincida con tu base de datos
@@ -16,7 +16,7 @@ const obtenerResumen = async (req, res) => {
     res.status(200).json({
       cantidadClientes,
       cantidadCreditos,
-      cantidadAsesores,
+      // cantidadAsesores,
       cantidadCreditosCancelados,
       cantidadCreditosPendientes,
     });
