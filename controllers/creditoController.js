@@ -56,7 +56,7 @@ exports.getAllCreditos = async (req, res) => {
       clienteNombreCompleto: credito.clienteSeleccionado
         ? `${credito.clienteSeleccionado.nombres} ${credito.clienteSeleccionado.apellidos}`
         : "Cliente no disponible",
-      asesorNombreCompleto: credito.asesorSelecccionado
+      asesorNombreCompleto: credito.asesorSeleccionado
         ? `${credito.asesorSeleccionado.nombre} ${credito.asesorSeleccionado.apellido}`
         : "Asesor no disponible",
     }));
