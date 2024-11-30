@@ -23,6 +23,11 @@ const creditoSchema = new mongoose.Schema({
   montoCuota: { type: Number },
   totalInteres: { type: String },
   totalPagar: { type: Number },
+
+  pagado: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 module.exports = mongoose.model("Credito", creditoSchema);

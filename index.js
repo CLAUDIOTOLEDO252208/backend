@@ -60,11 +60,14 @@ const clienteRoutes = require("./routes/clienteRoutes");
 const creditoRoutes = require("./routes/creditoRoutes"); // Nueva ruta de crédito
 const asesorRoutes = require("./routes/asesorRoutes");
 const dashboardRoutes = require("./routes/dashboardRoutes");
+const pagoRoutes = require("./routes/pagoRoutes");
+
 app.use("/api/clientes", clienteRoutes);
 app.use("/api/creditos", creditoRoutes); // Nueva ruta
 
 app.use("/api/asesores", asesorRoutes);
 app.use("/api/dashboard", dashboardRoutes);
+app.use("/api", pagoRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Servidor corriendo en puerto ${PORT}`));
