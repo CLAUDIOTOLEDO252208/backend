@@ -62,6 +62,7 @@ const asesorRoutes = require("./routes/asesorRoutes");
 const dashboardRoutes = require("./routes/dashboardRoutes");
 const pagoRoutes = require("./routes/pagoRoutes");
 const productoRoutes = require("./routes/productoRoutes");
+const ventasRoutes = require("./routes/ventasRoutes");
 
 app.use("/api/clientes", clienteRoutes);
 app.use("/api/creditos", creditoRoutes); // Nueva ruta
@@ -71,6 +72,7 @@ app.use("/api/dashboard", dashboardRoutes);
 app.use("/api", pagoRoutes);
 
 app.use("/api/productos", productoRoutes);
+app.use("/api", ventasRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Servidor corriendo en puerto ${PORT}`));
